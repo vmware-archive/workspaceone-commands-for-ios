@@ -50,6 +50,8 @@ When deploying the app to devices, use the following values in the Application C
 | ACTION_CLEARPASSCODE | bool | Optional | If set to true, enables the "Clear Passcode" action.  Set to false by default. |
 | ACTION_SYNC | bool | Optional | If set to true, enables the "Device Sync" action.  Set to false by default. |
 
+Rather than creating each of these keys manually, you can use the **Upload XML** button when configuring the Application Configuration in the Workspace ONE UEM Console.  Use the [sample XML file](./bin/WS1_Actions_appconfig.xml) located in the bin folder as a starting point, and then modify the key values as needed in the Workspace ONE UEM Console.
+
 ## Support
 Workspace ONE Commands for iOS project is released as open source software and, presently, provides community support through our GitHub project page and comes with no commercial support. If you encounter an issue or have a question, feel free to reach out via GitHub issues
 
