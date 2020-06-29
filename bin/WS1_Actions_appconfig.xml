@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<managedAppConfiguration>
+     <version>1.0</version>
+     <bundleId>com.vmware.ws1-action</bundleId>
+     <dict>
+          <string keyName="DEVICE_UID">
+               <defaultValue>
+                    <value>{DeviceUid}</value>
+               </defaultValue>
+          </string>
+          <string keyName="API_HOSTNAME">
+               <defaultValue>
+                    <value>https://apiurl.com/api</value>
+               </defaultValue>
+          </string>
+          <string keyName="API_KEY">
+               <defaultValue>
+                    <value></value>
+               </defaultValue>
+          </string>
+          <string keyName="API_USERNAME">
+               <defaultValue>
+                    <value>username</value>
+               </defaultValue>
+          </string>
+          <string keyName="API_PASSWORD">
+               <defaultValue>
+                    <value>password</value>
+               </defaultValue>
+          </string>
+          <boolean keyName="ACTION_WIPE">
+               <defaultValue>
+                    <value>true</value>
+               </defaultValue>
+          </boolean>
+          <boolean keyName="ACTION_ENTERPRISEWIPE">
+               <defaultValue>
+                    <value>true</value>
+               </defaultValue>
+          </boolean>
+          <boolean keyName="ACTION_CLEARPASSCODE">
+               <defaultValue>
+                    <value>true</value>
+               </defaultValue>
+          </boolean>
+          <boolean keyName="ACTION_SYNC">
+               <defaultValue>
+                    <value>true</value>
+               </defaultValue>
+          </boolean>
+     </dict>
+</managedAppConfiguration>
