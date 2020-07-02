@@ -5,7 +5,7 @@
 
 ## What is it?
 
-Workspace ONE Commands is an open source iOS swift project that provides enterprise IT admins to easily customize, build and deploy an IT focussed iOS application purpose built to perform on-demand MDM actions such as Device Wipe, Enterprise Wipe, and Clear Passcode on their own device.  The application can be entirely customized using Application Configuration to choose which actions to show in the app. 
+Workspace ONE Commands is an open source iOS swift project that provides enterprise IT admins to easily customize, build and deploy an IT focussed iOS application purpose built to perform on-demand MDM actions such as Device Wipe, Enterprise Wipe, and Clear Passcode on their own device.  The application can be entirely customized using Application Configuration to choose which actions to show in the app.
 
 Each of the commands available in the App are APIs as part of the Workspace ONE UEM solution. App config values configure the corresponding command to be made visible in the App UI
 
@@ -13,15 +13,15 @@ The simple user interface with a grid of actions keeps it extremely simple for u
 
 ## Why is it available as Open-Source?
 
-We believe this iOS project can truly harness the power of Workspace ONE UEM APIs and open doors for innovate line of business workflows. And ofcourse, it was a pretty simple app. 
+We believe this iOS project can truly harness the power of Workspace ONE UEM APIs and open doors for innovate line of business workflows. And ofcourse, it was a pretty simple app.
 
 *  Branding :  One of the advantages of providing the source code for the project is that it allows any organization to rename, brand and customize the application icon with their logo for easy discovery and familiarity
 
-*  Extensibility and community: The open source project gives the opportunity for any organization to fork, and add any more features to the app as necessary. It preferred we encourage raising a Pull Request to add any new features that others may also benefit from. 
+*  Extensibility and community: The open source project gives the opportunity for any organization to fork, and add any more features to the app as necessary. It preferred we encourage raising a Pull Request to add any new features that others may also benefit from.
 
 ## How to deploy the app?
 
-The source code can be signed and compiled with an Apple Enterprise Developer Account, that allows for distribution through couple different methods : 
+The source code can be signed and compiled with an Apple Enterprise Developer Account, that allows for distribution through couple different methods :
 
 1) Enterprise App Distribution : The archive (.ipa) built with Enterprise Developer account along with a *provisioning profile* can be uploaded to Workspace ONE UEM console and assigned to devices using smart groups. For more information on deploying enterprise apps with Workspace ONE UEM [refer this document](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/1811/VMware-Workspace-ONE-UEM-Mobile-Application-Management/GUID-AWT-CONFIG-INTERNAL-APPS-LOCAL.html).
 
@@ -56,6 +56,4 @@ Rather than creating each of these keys manually, you can use the **Upload XML**
 Workspace ONE Commands for iOS project is released as open source software and, presently, provides community support through our GitHub project page and comes with no commercial support. If you encounter an issue or have a question, feel free to reach out via GitHub issues
 
 ## Contributing
-The Workspace ONE Commands for iOS project team welcomes contributions from the community. If you wish to contribute code and you have not signed our contributor license agreement (CLA), our bot will update the issue when you open a Pull Request.
-
-
+The Workspace ONE Commands for iOS project team welcomes contributions from the community. Before you start working with ****, please read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch. For more detailed information, refer to CONTRIBUTING.md.

@@ -3,7 +3,7 @@
 //  ActionUITests
 //
 //  Created by Mohammed Lazim on 1/20/19.
-//  Copyright © 2020 VMware, Inc. All rights reserved.
+//  Copyright © 2019-2020 VMware, Inc.
 
 import XCTest
 
