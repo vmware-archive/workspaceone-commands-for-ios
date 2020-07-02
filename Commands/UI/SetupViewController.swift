@@ -11,12 +11,21 @@ import UIKit
 class SetupViewController: UIViewController {
 
     var testConfig: [String: Any] {
-        return [
-            :
+      return [
+            "DEVICE_UID": "asdfsadf",
+            "API_HOSTNAME": "https://cnaapp.ssdevrd/api",
+            "API_KEY": "asdfsadf",
+            "API_USERNAME": "naveen",
+            "API_PASSWORD": "naveen5",
+            "ENABLE_TROUBLESHOOTING": 1,
+            "ACTION_WIPE": 1,
+            "ACTION_ENTERPRISEWIPE": 1,
+            "ACTION_CLEARPASSCODE": 1,
+            "ACTION_SYNC": 1,
         ]
     }
 
-    var isTestSetup: Bool = false
+    var isTestSetup: Bool = true
 
     lazy var contextSetupProvider: UserDefaultsContextSetupProvider = ManagedConfigurationContextSetupProvider(context: self.context)
 

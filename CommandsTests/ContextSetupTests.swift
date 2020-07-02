@@ -10,12 +10,12 @@ import XCTest
 @testable import Actions
 
 private let validConfigurations: [String: Any]  = [
-    "DEVICE_UID": "",
+    "DEVICE_UID": "1231235245",
 
-    "API_HOSTNAME": "",
-    "API_KEY": "",
-    "API_USERNAME": "",
-    "API_PASSWORD": "",
+    "API_HOSTNAME": "https://cnaapp.ssdevrd.com/api",
+    "API_KEY": "sadfsad23234",
+    "API_USERNAME": "naveen",
+    "API_PASSWORD": "naveen5",
     
     "BACKGROUND_IMAGE": "https://www.testwebsite.com/image.png",
     
