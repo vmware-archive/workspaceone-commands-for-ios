@@ -25,7 +25,7 @@ class SetupViewController: UIViewController {
         ]
     }
 
-    var isTestSetup: Bool = true
+    var isTestSetup: Bool = false
 
     lazy var contextSetupProvider: UserDefaultsContextSetupProvider = ManagedConfigurationContextSetupProvider(context: self.context)
 
