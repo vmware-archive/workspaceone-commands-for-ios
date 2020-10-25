@@ -137,3 +137,22 @@ struct ManagedConfigurationContextSetupProvider: UserDefaultsContextSetupProvide
     }
 }
 
+struct StoredConfigurationContextSetupProvider: UserDefaultsContextSetupProvider {
+
+    static var configurationKey = "com.vmware.commands.configuration"
+
+    var context: ApplicationContext
+
+    init(context: ApplicationContext) {
+        self.context = context
+    }
+
+    var store: UserDefaults {
+        return .standard
+    }
+
+    var configurationKey: String {
+        return Self.configurationKey
+    }
+}
+

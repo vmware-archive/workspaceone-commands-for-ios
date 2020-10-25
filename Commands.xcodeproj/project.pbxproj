@@ -20,6 +20,8 @@
 		79343C1222796EC900FA999F /* DeviceCommandEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79343C1122796EC900FA999F /* DeviceCommandEndpoint.swift */; };
 		79343C162279715C00FA999F /* DeviceSyncEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79343C152279715C00FA999F /* DeviceSyncEndpoint.swift */; };
 		79343C182279719E00FA999F /* DeviceEnterpriseWipeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79343C172279719E00FA999F /* DeviceEnterpriseWipeEndpoint.swift */; };
+		7957B5DF254479CD00143044 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7957B5DE254479CD00143044 /* ConfigurationViewController.swift */; };
+		7957B5E92545658B00143044 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7957B5E82545658B00143044 /* DashboardPresenter.swift */; };
 		799FEFAF225A147100FBBC80 /* DeviceClearPasscodeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FEFAE225A147100FBBC80 /* DeviceClearPasscodeEndpoint.swift */; };
 		79B189C52290CCA50013CD24 /* TroubleshootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B189C42290CCA50013CD24 /* TroubleshootViewController.swift */; };
 		79DA2CA122D9DF9400482A8B /* ConsoleAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA2CA022D9DF9400482A8B /* ConsoleAuthorizer.swift */; };
@@ -70,6 +72,8 @@
 		79343C1122796EC900FA999F /* DeviceCommandEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCommandEndpoint.swift; sourceTree = "<group>"; };
 		79343C152279715C00FA999F /* DeviceSyncEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSyncEndpoint.swift; sourceTree = "<group>"; };
 		79343C172279719E00FA999F /* DeviceEnterpriseWipeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEnterpriseWipeEndpoint.swift; sourceTree = "<group>"; };
+		7957B5DE254479CD00143044 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		7957B5E82545658B00143044 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
 		799FEFAE225A147100FBBC80 /* DeviceClearPasscodeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceClearPasscodeEndpoint.swift; sourceTree = "<group>"; };
 		79B189C42290CCA50013CD24 /* TroubleshootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroubleshootViewController.swift; sourceTree = "<group>"; };
 		79DA2CA022D9DF9400482A8B /* ConsoleAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleAuthorizer.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				79DA2CA222D9E00400482A8B /* Dashboard */,
 				7907DBD022D3832F001C9F46 /* SetupViewController.swift */,
 				79B189C42290CCA50013CD24 /* TroubleshootViewController.swift */,
+				7957B5DE254479CD00143044 /* ConfigurationViewController.swift */,
+				7957B5E82545658B00143044 /* DashboardPresenter.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				799FEFAF225A147100FBBC80 /* DeviceClearPasscodeEndpoint.swift in Sources */,
 				79FB1FA1221007EA00889228 /* AppConfig.swift in Sources */,
 				792057DC21F4574C00FD6888 /* DashboardViewController.swift in Sources */,
+				7957B5E92545658B00143044 /* DashboardPresenter.swift in Sources */,
 				79343C162279715C00FA999F /* DeviceSyncEndpoint.swift in Sources */,
 				79DA2CA622D9E49200482A8B /* Actions.swift in Sources */,
 				79DA2CA422D9E23300482A8B /* ActionCell.swift in Sources */,
@@ -368,6 +375,7 @@
 				79DA2CA822D9E50300482A8B /* APIConfiguration.swift in Sources */,
 				7917C99922197D8700305610 /* String.swift in Sources */,
 				79343C1222796EC900FA999F /* DeviceCommandEndpoint.swift in Sources */,
+				7957B5DF254479CD00143044 /* ConfigurationViewController.swift in Sources */,
 				7907DBD122D3832F001C9F46 /* SetupViewController.swift in Sources */,
 				7917C9962219514300305610 /* DeviceWipeEndpoint.swift in Sources */,
 			);
@@ -548,7 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7SUQPKEF96;
 				INFOPLIST_FILE = Commands/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,7 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7SUQPKEF96;
 				INFOPLIST_FILE = Commands/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

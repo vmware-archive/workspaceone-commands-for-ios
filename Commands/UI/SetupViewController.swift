@@ -28,6 +28,7 @@ class SetupViewController: UIViewController {
     var isTestSetup: Bool = false
 
     lazy var contextSetupProvider: UserDefaultsContextSetupProvider = ManagedConfigurationContextSetupProvider(context: self.context)
+    lazy var storedConfigContextSetupProvider: UserDefaultsContextSetupProvider = StoredConfigurationContextSetupProvider(context: self.context)
 
     var context: ApplicationContext { return .shared }
 
@@ -65,14 +66,42 @@ class SetupViewController: UIViewController {
 
     func handleSetup(status: ContextSetupStatus) {
 
-        switch status {
+        if case .success = status {
+            self.setupFinished()
+            return
+        }
 
+        guard case .missingConfigInfo = status else {
+            self.setupFailed(error: status)
+            return
+        }
+
+        // Only if we have an option to use stored config, go forward
+        guard self.canUseStoredConfiguration() else {
+            self.setupFailed(error: status)
+            return
+        }
+
+        // Managed settings are missing. We have two options now:
+        // 1. Check if have a stored config (that user entered previously)
+        // 2. Prompt user for new config
+
+        let storedConfigStatus = self.storedConfigContextSetupProvider.setup()
+
+        switch storedConfigStatus {
         case .success:
             self.setupFinished()
+
+        case .missingConfigInfo:
+            self.showConfigurationPrompt()
 
         default:
             self.setupFailed(error: status)
         }
+    }
+
+    private func canUseStoredConfiguration() -> Bool {
+        return true
     }
 
     func setupFinished() {
@@ -116,6 +145,16 @@ class SetupViewController: UIViewController {
             self?.errorImage.isHidden = false
 
             self?.errorDescriptionLabel.text = description
+        }
+    }
+
+    func showConfigurationPrompt() {
+        let screenIdentifier = ConfigurationViewController.screenIdentifier
+
+        DispatchQueue.main.async { [weak self] in
+            let screen = ConfigurationViewController.storyboard.instantiateViewController(withIdentifier: screenIdentifier)
+            screen.modalPresentationStyle = .fullScreen
+            self?.present(screen, animated: false, completion: nil)
         }
     }
 
