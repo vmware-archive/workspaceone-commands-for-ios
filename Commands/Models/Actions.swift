@@ -32,6 +32,24 @@ enum Actions {
         }
     }
 
+    var configurationKey: String {
+        switch self {
+
+        case .wipe:
+            return AppConfig.Key.actionWipe.rawValue
+
+        case .clearPasscode:
+            return AppConfig.Key.actionClearPasscode.rawValue
+
+        case .enterpriseWipe:
+            return AppConfig.Key.actionEnterpriseWipe.rawValue
+
+        case .deviceSync:
+            return AppConfig.Key.actionSync.rawValue
+
+        }
+    }
+
     func actionInfo() -> ActionCellInfo {
         switch self {
         case .wipe: return .wipe

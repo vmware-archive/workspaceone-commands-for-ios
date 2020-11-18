@@ -4,10 +4,23 @@
 //
 //  Created by Mohammed Lazim on 7/8/19.
 //  Updated by Paul Evans on 5/12/20.
+//  Updated by Mohammed Lazim on 26/10/20.
 //  Copyright © 2019-2020 VMware, Inc.
 
 import UIKit
 
+/// Setup screen
+///
+/// Initial screen for the application that does these:
+/// - Sets up context using these:
+///     - Managed config (if present)
+///     - Stored config (if present)
+///     - Prompts user for a config & saves it (only when configs are not present in both above cases & Hub not present on the device)
+/// - Presents Dashboard (except when prompted for configuration)
+///
+/// For testing a config:
+/// - Set `isTestSetup` flag to `true`
+/// - Set a valid configuration for `testConfig`
 class SetupViewController: UIViewController {
 
     var testConfig: [String: Any] {
@@ -27,7 +40,8 @@ class SetupViewController: UIViewController {
 
     var isTestSetup: Bool = false
 
-    lazy var contextSetupProvider: UserDefaultsContextSetupProvider = ManagedConfigurationContextSetupProvider(context: self.context)
+    lazy var managedConfigContextSetupProvider: UserDefaultsContextSetupProvider = ManagedConfigurationContextSetupProvider(context: self.context)
+    lazy var storedConfigContextSetupProvider: UserDefaultsContextSetupProvider = StoredConfigurationContextSetupProvider(context: self.context)
 
     var context: ApplicationContext { return .shared }
 
@@ -56,22 +70,94 @@ class SetupViewController: UIViewController {
     func setupContext() {
 
         if self.isTestSetup {
-            self.handleSetup(status: self.contextSetupProvider.setup(with: self.testConfig))
+            self.handleSetup(status: self.managedConfigContextSetupProvider.setup(with: self.testConfig))
         } else {
-            self.handleSetup(status: self.contextSetupProvider.setup())
+            self.handleSetup(status: self.managedConfigContextSetupProvider.setup())
         }
 
     }
 
     func handleSetup(status: ContextSetupStatus) {
 
-        switch status {
+        if case .success = status {
+            self.setupFinished()
+            return
+        }
 
+        guard case .missingConfigInfo = status else {
+            self.setupFailed(error: status)
+            return
+        }
+
+        // Only if we have an option to use stored config, go forward
+        guard self.canUseStoredConfiguration() else {
+            self.setupFailed(error: status)
+            return
+        }
+
+        // Managed settings are missing. We have two options now:
+        // 1. Check if have a stored config (that user entered previously)
+        // 2. Prompt user for new config
+
+        let storedConfigStatus = self.storedConfigContextSetupProvider.setup()
+
+        switch storedConfigStatus {
         case .success:
             self.setupFinished()
 
+        case .missingConfigInfo:
+            self.showConfigurationPrompt()
+
         default:
             self.setupFailed(error: status)
+        }
+    }
+}
+
+// MARK: Helpers for stored configuration
+private extension SetupViewController {
+    func canUseStoredConfiguration() -> Bool {
+        guard let hubURL = URL(string: "airwatch://") else {
+            return false
+        }
+
+        /// Store configuration can be used only when Hub is not available in the device.
+        return DispatchQueue.main.sync {
+            return UIApplication.shared.canOpenURL(hubURL) == false
+        }
+    }
+
+    func showConfigurationPrompt() {
+        let screenIdentifier = ConfigurationViewController.screenIdentifier
+
+        DispatchQueue.main.async { [weak self] in
+            let screen = ConfigurationViewController.storyboard.instantiateViewController(withIdentifier: screenIdentifier)
+            screen.modalPresentationStyle = .fullScreen
+            self?.present(screen, animated: false, completion: nil)
+        }
+    }
+}
+
+// MARK: Screen state change
+private extension SetupViewController {
+
+    func showActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.isHidden = false
+            self?.errorLabel.isHidden = true
+            self?.errorDescriptionLabel.isHidden = true
+            self?.errorImage.isHidden = true
+        }
+    }
+
+    func showError(description: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.isHidden = true
+            self?.errorLabel.isHidden = false
+            self?.errorDescriptionLabel.isHidden = false
+            self?.errorImage.isHidden = false
+
+            self?.errorDescriptionLabel.text = description
         }
     }
 
@@ -96,27 +182,4 @@ class SetupViewController: UIViewController {
     func setupFailed(error: ContextSetupStatus) {
         self.showError(description: error.errorDescription())
     }
-
-
-    // MARK: Screen state change
-    func showActivityIndicator() {
-        DispatchQueue.main.async { [weak self] in
-            self?.activityIndicator.isHidden = false
-            self?.errorLabel.isHidden = true
-            self?.errorDescriptionLabel.isHidden = true
-            self?.errorImage.isHidden = true
-        }
-    }
-
-    func showError(description: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.activityIndicator.isHidden = true
-            self?.errorLabel.isHidden = false
-            self?.errorDescriptionLabel.isHidden = false
-            self?.errorImage.isHidden = false
-
-            self?.errorDescriptionLabel.text = description
-        }
-    }
-
 }

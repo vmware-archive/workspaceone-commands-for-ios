@@ -167,4 +167,20 @@ class AppConfig {
             self.supportedActions.append(.enterpriseWipe)
         }
     }
+
+    static func dictionaryRepresentation(apiConfig: APIConfiguration, deviceID: String, supportedActions: [Actions]) -> [String: Any] {
+        var map = [String: Any]()
+        map[Key.apiHostname.rawValue] = apiConfig.hostname
+        map[Key.apiKey.rawValue] = apiConfig.tenant
+        map[Key.apiUsername.rawValue] = apiConfig.username
+        map[Key.apiPassword.rawValue] = apiConfig.password
+
+        map[Key.deviceIdentifier.rawValue] = deviceID
+
+        map[Key.troubleshootingEnabled.rawValue] = 1
+
+        supportedActions.compactMap { $0.configurationKey }.forEach { map[$0] = 1 }
+
+        return map
+    }
 }
