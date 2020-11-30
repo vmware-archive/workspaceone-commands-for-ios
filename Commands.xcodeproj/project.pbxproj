@@ -561,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.numberlock.commands;
 				PRODUCT_NAME = Actions;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -583,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.numberlock.commands;
 				PRODUCT_NAME = Actions;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -635,7 +635,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S2ZMFGQM93;
+				DEVELOPMENT_TEAM = 7SUQPKEF96;
 				INFOPLIST_FILE = "VMware ActionUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -655,7 +655,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S2ZMFGQM93;
+				DEVELOPMENT_TEAM = 7SUQPKEF96;
 				INFOPLIST_FILE = "VMware ActionUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

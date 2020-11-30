@@ -25,18 +25,56 @@ We believe this iOS project can truly harness the power of Workspace ONE UEM API
 
 The source code can be signed and compiled with an Apple Enterprise Developer Account, that allows for distribution through couple different methods :
 
-Enterprise App Distribution : The archive (.ipa) built with Enterprise Developer account along with a *provisioning profile* can be uploaded to Workspace ONE UEM console and assigned to devices using smart groups. For more information on deploying enterprise apps with Workspace ONE UEM [refer this document](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/1811/VMware-Workspace-ONE-UEM-Mobile-Application-Management/GUID-AWT-CONFIG-INTERNAL-APPS-LOCAL.html).
+### Enterprise App Distribution
+The archive (.ipa) built with Enterprise Developer account along with a *provisioning profile* can be uploaded to Workspace ONE UEM console and assigned to devices using smart groups. For more information on deploying enterprise apps with Workspace ONE UEM [refer this document](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/1811/VMware-Workspace-ONE-UEM-Mobile-Application-Management/GUID-AWT-CONFIG-INTERNAL-APPS-LOCAL.html).
 
-Custom App : eploying as a Custom App with the help of Apple Business Manager will be the most preferred method going forward. For more information on Custom Apps check [this Techzone tutorial](https://techzone.vmware.com/managing-ios-custom-apps-vmware-workspace-one-operational-tutorial).  The Application Configuration keys described above can be added to the app deployment during the assignment phase, as outlined in Step 8 of the [Assigning Custom Apps to Devices](https://techzone.vmware.com/managing-ios-custom-apps-vmware-workspace-one-operational-tutorial#1249320) section.
+### Custom App
 
-We have some default screenshots of the application available under ``App Screenshots`` folder in the repo
+**AppStore Connect Settings to release as a Custom App**
 
-```NOTE: Apple Store review process currently limits the distribution through the custom store due to the sole dependency on AppConfig to configure the application and are looking for an alternative method to configure the app for demo purpose. The app is being updated to include an additional screen to help with the AppStore review process.```
+To successfully go through AppStore Review, Apple should be able to test the app functionality. For this purpose, there is a demo mode added to the application that pops up a screen with manual input of information that will in practice be deployed through AppConfig. One of the easiest ways to help Apple test the demo mode is to create a test Organization group in a UAT environment, with REST API enabled, test admin account with API permissions and a test iOS device enrolled. Share the environment hostname (for eg: https://cn135.awmdm.com), API Token, Username and Password of the test admin account and the device identifier of the enrolled test device (This ID can be found in the URL when hovering over the device record in the admin console)
 
+To make it easier for submission, here's a quick write up that can be used for submission:
+
+```
+This is an IT focussed application that works in conjunction with Mobile Device Management (MDM), where the functionality for the application is unlocked using MDM defined Application Configuration. The usage of this app is strictly in IT workflows for iPads / iPhones that are shared in a line of business workflow where the App includes quick actions that the user can take to do things like "Factory Wipe", "Device Sync". There is no sign in information required for the application as it is entirely configured using Managed App Config.
+
+For more information on App Config, please refer :
+https://developer.apple.com/documentation/devicemanagement/installapplicationcommand/command
+https://www.apple.com/business/docs/resources/Managing_Devices_and_Corporate_Data_on_iOS.pdf
+
+NOTE : This application does NOT trigger MDM enrollment, but is instead deployed as a Managed Application after an MDM enrollment.
+
+Source Code for the application is available here: https://github.com/vmware-samples/workspaceone-commands-for-ios
+
+You can use any MDM solution to test the app with the App Config information provided in the Github repo above.
+
+For the purposes of App Review, we've created a manual input screen to input information that would typically be deployed over the-air using Mobile Device Management.
+
+Instructions to test:
+
+Hostname : {INSERT HOSTNAME}
+API Key : {INSERT API TOKEN}
+Username : {INSERT ADMIN USERNAME}
+Password : {INSERT ADMIN PASSWORD}
+Device Identifier : {INSERT TEST DEVICE ID}
+
+The default action for demo mode is "Sync Device", which syncs the device with the device management server to get necessary applications and policies over the air. A demo device has been staged to test the sync.
+```
+
+Select the private distribution option with the Organization ID for the Apple Business Manager account
+
+Example : 
+![Distribution.png?raw=true](./bin/Distribution.png)
+
+**Deployment**
+
+Deploying as a Custom App with the help of Apple Business Manager will be the most preferred method going forward. For more information on Custom Apps check [this Techzone tutorial](https://techzone.vmware.com/managing-ios-custom-apps-vmware-workspace-one-operational-tutorial).  The Application Configuration keys described above can be added to the app deployment during the assignment phase, as outlined in Step 8 of the [Assigning Custom Apps to Devices](https://techzone.vmware.com/managing-ios-custom-apps-vmware-workspace-one-operational-tutorial#1249320) section.
 
 ## How to configure the app?
 
-*Pre-requisites*
+**Pre-requisites**
+
 * Access to Workspace ONE UEM console
 * API service account (needed as input in Appconfig below)
 * API token (needed as input in AppConfig below)
